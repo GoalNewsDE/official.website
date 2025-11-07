@@ -1,6 +1,55 @@
 <!DOCTYPE html>
 <html lang="de">
 
+<style>
+  /* Wartungs-Banner Styles */
+.maintenance-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, #fff34e, #ff0909);
+    color: white;
+    text-align: center;
+    padding: 12px 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    animation: slideDown 0.5s ease-out;
+}
+
+.banner-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    display: inline-block;
+    animation: rotate 2s linear infinite;
+}
+
+/* Animationen */
+@keyframes slideDown {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Mobil optimiert */
+@media (max-width: 600px) {
+    .maintenance-banner {
+        font-size: 14px;
+        padding: 10px 15px;
+    }
+}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,6 +103,14 @@
             <li><a href="https://www.youtube.com/@Goalnewsde">YouTube</a></li>
         </ul>
     </header>
+
+    <!-- Wartungs-Banner -->
+    <div class="maintenance-banner">
+        <div class="banner-content">
+            <span class="icon">🛠️</span>
+            <span class="text">Unser Kommentar-Forum wird gerade Erweitert! Trotz der Erweiterung können sie das Kommentar-Forum Nutzen</span>
+        </div>
+    </div>
 
     <!-- Countdown -->
     <div class="countdown-section">
