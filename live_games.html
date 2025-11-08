@@ -11,6 +11,7 @@ h2 { margin:20px 0; }
 .matches-table th, .matches-table td { border:1px solid #444; padding:10px; text-align:center; transition: all 0.5s ease; }
 .matches-table th { background:#1db954; color:#000; }
 .goal-animation { background: #00ff00; color:#000; font-weight:bold; transform: scale(1.2); animation: pop 0.5s forwards; }
+.over-game { text-decoration: line-through; opacity: 0.6; transition: all 0.5s ease; }
 @keyframes pop { 0% { transform: scale(1); } 50% { transform: scale(1.5); } 100% { transform: scale(1.2); } }
 footer { margin-top:30px; padding:15px; background:#111; color:#eee; }
 </style>
@@ -19,6 +20,7 @@ footer { margin-top:30px; padding:15px; background:#111; color:#eee; }
 
 <h2> Live Spiele</h2>
 <p>Alle Spiele sind Live und noch im Gange</p>
+<p>Durchgestrichene Spiele sind beendet </p>
 <table class="matches-table">
 <thead>
 <tr><th>Heimteam</th><th>Gastteam</th><th>Ergebnis</th></tr>
@@ -52,7 +54,7 @@ const tableBody = document.getElementById("tableBody");
 // --- Funktion um Sammlung automatisch anzulegen ---
 async function ensureCollectionExists(collectionName) {
     const docRef = doc(db, collectionName, "initDoc");
-    await setDoc(docRef, { init: true }); // Erstellt ein Dummy-Dokument, falls die Sammlung leer ist
+    await setDoc(docRef, { init: true });
 }
 
 // --- Live-Spiele anzeigen ---
@@ -75,9 +77,14 @@ async function initLiveGames() {
             const away = data.away || "";
             const score = data.score || "";
             const goal = data.goal || false;
+            const over = data.over || false; // Neu: over-Status
 
             const tr = document.createElement("tr");
-            tr.innerHTML = `<td>${home}</td><td>${away}</td><td class="${goal ? 'goal-animation' : ''}">${score}</td>`;
+            tr.innerHTML = `
+                <td class="${over ? 'over-game' : ''}">${home}</td>
+                <td class="${over ? 'over-game' : ''}">${away}</td>
+                <td class="${goal ? 'goal-animation' : ''} ${over ? 'over-game' : ''}">${score}</td>
+            `;
             tableBody.appendChild(tr);
         });
     });
@@ -87,4 +94,3 @@ initLiveGames();
 </script>
 </body>
 </html>
-
