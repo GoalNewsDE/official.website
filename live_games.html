@@ -35,6 +35,12 @@ footer { margin-top:30px; padding:15px; background:#111; color:#eee; }
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 0.9; }
 }
+
+/* ---- Karten Animation (optional minimal) ---- */
+.card-icon {
+    margin-left: 3px;
+    font-size: 0.9rem;
+}
 </style>
 </head>
 <body>
@@ -130,14 +136,26 @@ async function initLiveGames() {
             const goal = data.goal || false;
             const over = data.over || false;
             const halfTime = data.halfTime || false;
+            const homeCards = data.homeCards || {};
+            const awayCards = data.awayCards || {};
 
             if(doc.id === "next_game") return;
 
             const tr = document.createElement("tr");
             tr.innerHTML = `
-                <td class="${over ? 'over-game' : ''}">${home}</td>
-                <td class="${over ? 'over-game' : ''}">${away}</td>
-                <td class="${goal ? 'goal-animation' : ''} ${over ? 'over-game' : ''}">${score}</td>
+                <td class="${over ? 'over-game' : ''}">
+                    ${home} 
+                    ${homeCards.yellow ? "🟨".repeat(homeCards.yellow) : ""}
+                    ${homeCards.red ? "🟥".repeat(homeCards.red) : ""}
+                </td>
+                <td class="${over ? 'over-game' : ''}">
+                    ${away} 
+                    ${awayCards.yellow ? "🟨".repeat(awayCards.yellow) : ""}
+                    ${awayCards.red ? "🟥".repeat(awayCards.red) : ""}
+                </td>
+                <td class="${goal ? 'goal-animation' : ''} ${over ? 'over-game' : ''}">
+                    ${score}
+                </td>
             `;
             tableBody.appendChild(tr);
 
