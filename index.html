@@ -65,9 +65,15 @@
         transition: all 0.5s ease;
       }
       @keyframes pop {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.5); }
-        100% { transform: scale(1.2); }
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+        100% {
+          transform: scale(1.2);
+        }
       }
 
       #nextGameCountdown {
@@ -97,9 +103,18 @@
         animation: halftimePulse 1.5s infinite alternate;
       }
       @keyframes halftimePulse {
-        0% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.2); opacity: 1; }
-        100% { transform: scale(1); opacity: 0.9; }
+        0% {
+          transform: scale(1);
+          opacity: 0.8;
+        }
+        50% {
+          transform: scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0.9;
+        }
       }
 
       /* Uhr */
@@ -123,26 +138,43 @@
         opacity: 0;
         transform: translateY(20px) scale(0.8);
         animation: varCool 1.5s ease forwards,
-                   varGlow 2s ease-in-out infinite alternate;
+          varGlow 2s ease-in-out infinite alternate;
         text-align: center;
       }
       @keyframes varCool {
-        0% { opacity: 0; transform: translateY(20px) scale(0.8); }
-        50% { opacity: 1; transform: translateY(-5px) scale(1.1); }
-        70% { transform: translateY(0) scale(1); }
-        100% { opacity: 1; transform: translateY(0) scale(1); }
+        0% {
+          opacity: 0;
+          transform: translateY(20px) scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(-5px) scale(1.1);
+        }
+        70% {
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
       @keyframes varGlow {
-        0% { box-shadow: 0 0 5px rgba(255, 223, 0, 0.6); }
-        50% { box-shadow: 0 0 15px rgba(255, 255, 200, 0.9); }
-        100% { box-shadow: 0 0 5px rgba(255, 223, 0, 0.6); }
+        0% {
+          box-shadow: 0 0 5px rgba(255, 223, 0, 0.6);
+        }
+        50% {
+          box-shadow: 0 0 15px rgba(255, 255, 200, 0.9);
+        }
+        100% {
+          box-shadow: 0 0 5px rgba(255, 223, 0, 0.6);
+        }
       }
 
       /* 🔒 Sperranimation für Breaking News */
       #breakingNews.locked {
         position: relative;
         pointer-events: none;
-        height: 50px; 
+        height: 50px;
         overflow: hidden;
       }
       #breakingNews.locked::before {
@@ -160,9 +192,92 @@
         display: none;
       }
       @keyframes lockSlide {
-        0% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
-        50% { transform: translateX(-50%) translateY(-5px); opacity: 1; }
-        100% { transform: translateX(-50%) translateY(0); opacity: 0.6; }
+        0% {
+          transform: translateX(-50%) translateY(0);
+          opacity: 0.6;
+        }
+        50% {
+          transform: translateX(-50%) translateY(-5px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+          opacity: 0.6;
+        }
+      }
+
+      /* ----------------------- */
+      /* Desktop Layout ab 1024px */
+      /* ----------------------- */
+      @media screen and (min-width: 1024px) {
+        body {
+          text-align: left;
+          padding: 20px 80px;
+        }
+
+        header.navbar {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 40px;
+          background: #111;
+        }
+
+        .logo {
+          font-size: 2rem;
+          font-weight: bold;
+          color: #1db954;
+        }
+
+        .nav-menu {
+          display: flex;
+          gap: 25px;
+        }
+
+        .nav-menu li a {
+          font-size: 1rem;
+          padding: 10px 15px;
+          transition: color 0.3s;
+        }
+
+        .nav-menu li a:hover {
+          color: #1db954;
+        }
+
+        .countdown-section {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 40px 0;
+        }
+
+        .matches {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 40px;
+          margin-top: 60px;
+        }
+
+        #liveGamesSection {
+          margin-top: 60px;
+        }
+
+        .matches-table {
+          font-size: 1.1rem;
+        }
+
+        footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 20px 60px;
+          font-size: 0.9rem;
+        }
+
+        /* Breaking News auf Desktop größer */
+        #breakingNews.locked::before {
+          font-size: 1.5rem;
+        }
       }
     </style>
   </head>
@@ -171,11 +286,25 @@
     <!-- Breaking News -->
     <div id="breakingNews" class="locked">
       <div class="news-wrapper">
-        <span class="news-item">Deutschland-Kader für November-Länderspiele enthält fünf Spieler des FC Bayern München</span>
-        <span class="news-item">Julian Nagelsmann betont: Im letzten WM-Quali-Block geht’s nur noch um Siege, keine Experimente mehr</span>
-        <span class="news-item">Borussia Dortmund bietet Julian Brandt einen neuen Vertrag an</span>
-        <span class="news-item">DFB fordert Entschädigung, wenn Spieler nach Jugendzeit eine andere Nationalmannschaft wählen</span>
-        <span class="news-item">Lukas Podolski plant, seine aktive Fußballkarriere am Saisonende zu beenden</span>
+        <span class="news-item"
+          >Deutschland-Kader für November-Länderspiele enthält fünf Spieler des
+          FC Bayern München</span
+        >
+        <span class="news-item"
+          >Julian Nagelsmann betont: Im letzten WM-Quali-Block geht’s nur noch
+          um Siege, keine Experimente mehr</span
+        >
+        <span class="news-item"
+          >Borussia Dortmund bietet Julian Brandt einen neuen Vertrag an</span
+        >
+        <span class="news-item"
+          >DFB fordert Entschädigung, wenn Spieler nach Jugendzeit eine andere
+          Nationalmannschaft wählen</span
+        >
+        <span class="news-item"
+          >Lukas Podolski plant, seine aktive Fußballkarriere am Saisonende zu
+          beenden</span
+        >
       </div>
     </div>
 
@@ -200,7 +329,11 @@
         <li><a href="feedback.html">Helfen Sie uns!</a></li>
         <li><a href="coins.html">Was sind COINS</a></li>
         <li><a href="download.html">📥 Download Bereich</a></li>
-        <li><a href="https://whatsapp.com/channel/0029Vb7PDwN8V0toB3ATWZ1Y">WhatsApp</a></li>
+        <li>
+          <a href="https://whatsapp.com/channel/0029Vb7PDwN8V0toB3ATWZ1Y"
+            >WhatsApp</a
+          >
+        </li>
         <li><a href="https://www.youtube.com/@Goalnewsde">YouTube</a></li>
       </ul>
     </header>
@@ -214,7 +347,9 @@
     <!-- 🏆 Aktueller Bundesliga-Spieltag -->
     <div class="matches" style="text-align: center; margin-top: 40px">
       <h2 style="color: #1db954">🏆 Bundesliga-Spieltag 11</h2>
-      <h3 style="color: #fff; margin-bottom: 20px">11. Spieltag (21. - 23. November)</h3>
+      <h3 style="color: #fff; margin-bottom: 20px">
+        11. Spieltag (21. - 23. November)
+      </h3>
       <div style="color: #eee">
         <h4 style="color: #1db954">Freitag:</h4>
         <p>Mainz 05 20:30 TSG Hoffenheim</p>
@@ -225,7 +360,9 @@
           VfL Wolfsburg 15:30 Bayer Leverkusen<br />
           FC Augsburg 15:30 Hamburger SV<br />
           FC Heidenheim 15:30 Bor. M'gladbach<br />
-          <strong style="color: gold">Topspiel: 1. FC Köln 18:30 Eintracht Frankfurt</strong>
+          <strong style="color: gold"
+            >Topspiel: 1. FC Köln 18:30 Eintracht Frankfurt</strong
+          >
         </p>
         <h4 style="color: #1db954">Sonntag:</h4>
         <p>
@@ -250,14 +387,16 @@
           </tr>
         </thead>
         <tbody id="tableBody">
-          <tr><td colspan="3">Lade Spiele...</td></tr>
+          <tr>
+            <td colspan="3">Lade Spiele...</td>
+          </tr>
         </tbody>
       </table>
     </section>
 
     <!-- Footer -->
     <footer>
-      GoalNews © 2025 – Don’t steal our stuff.<br>
+      GoalNews © 2025 – Don’t steal our stuff.<br />
       <a href="mailto:info@goalnewsde.de">Email</a> |
       <a href="agb.html">Datenschutz</a> |
       <a href="security.html">Sicherheit</a> |
@@ -267,8 +406,16 @@
     <!-- Firebase Live Games + Breaking News Zugriff -->
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js";
-      import { getFirestore, collection, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
-      import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
+      import {
+        getFirestore,
+        collection,
+        doc,
+        onSnapshot,
+      } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
 
       const firebaseConfig = {
         apiKey: "AIzaSyBmIcdFtxv4jBJKdiAkEiwnkQ8yRwiG_0w",
@@ -356,7 +503,9 @@
         }
         varDiv.textContent = comment;
         varDiv.style.opacity = 1;
-        setTimeout(() => { varDiv.style.opacity = 0; }, 5000);
+        setTimeout(() => {
+          varDiv.style.opacity = 0;
+        }, 5000);
       }
 
       async function initLiveGames() {
@@ -364,7 +513,8 @@
         onSnapshot(colRef, (snapshot) => {
           tableBody.innerHTML = "";
           if (snapshot.empty) {
-            tableBody.innerHTML = "<tr><td colspan='3'>Keine aktuellen Spiele</td></tr>";
+            tableBody.innerHTML =
+              "<tr><td colspan='3'>Keine aktuellen Spiele</td></tr>";
             return;
           }
           snapshot.forEach((doc) => {
@@ -372,16 +522,27 @@
             if (doc.id === "next_game") return;
             const tr = document.createElement("tr");
             tr.innerHTML = `
-              <td class="${data.over ? "over-game" : ""}">${data.home || ""}</td>
-              <td class="${data.over ? "over-game" : ""}">${data.away || ""}</td>
-              <td class="${data.goal ? "goal-animation" : ""} ${data.over ? "over-game" : ""}">${data.score || ""}</td>
+              <td class="${data.over ? "over-game" : ""}">${
+              data.home || ""
+            }</td>
+              <td class="${data.over ? "over-game" : ""}">${
+              data.away || ""
+            }</td>
+              <td class="${data.goal ? "goal-animation" : ""} ${
+              data.over ? "over-game" : ""
+            }">${data.score || ""}</td>
             `;
             tableBody.appendChild(tr);
             const td = tr.querySelector("td:nth-child(3)");
             if (data.halfTime) addHalfTimeAnimation(td);
             else removeHalfTimeAnimation(td);
             if (data.startTime)
-              startMatchTimer(doc.id, td, data.startTime.toDate().getTime(), data.halfTime);
+              startMatchTimer(
+                doc.id,
+                td,
+                data.startTime.toDate().getTime(),
+                data.halfTime
+              );
             if (data.varComment) showVARComment(td, data.varComment);
           });
         });
