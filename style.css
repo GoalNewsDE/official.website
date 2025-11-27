@@ -111,20 +111,23 @@ header .logo,
 
 /* Desktop */
 @media screen and (min-width: 768px) {
+  /* Hamburger immer sichtbar */
   .hamburger-icon {
-    display: none;
+    display: flex; /* oder einfach rauslassen */
   }
+
   .nav-menu {
-    position: static;
-    flex-direction: row;
-    height: auto;
-    width: auto;
-    background: transparent;
-    padding: 0;
-    gap: 15px;
+    position: fixed; /* damit es weiter als Overlay bleibt */
+    flex-direction: column; /* wie auf Mobile */
+    height: 100%;
+    width: 70%;
+    background: #111;
+    padding-top: 60px;
+    gap: 20px;
   }
+
   .nav-menu a {
-    color: white;
+    color: #1db954;
   }
 }
 
