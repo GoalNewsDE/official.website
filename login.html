@@ -2,169 +2,68 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <title>GoalNews Community</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
     <style>
-      /* BODY */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
       body {
-        font-family: "Poppins", sans-serif;
-        background: linear-gradient(135deg, #0e1111, #1db954);
-        color: #333;
+        height: 100%;
+      }
+
+      body {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
-        margin: 0;
+        background: #0f0f0f;
+        font-family: Arial, sans-serif;
+        color: white;
       }
 
-      /* CONTAINER */
       .container {
-        background: #fff;
-        padding: 40px 30px;
-        border-radius: 18px;
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-        width: 90%;
-        max-width: 380px;
+        background: #1a1a1a;
+        padding: 30px;
+        width: 330px;
+        border-radius: 10px;
         text-align: center;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .container:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
-      }
-
-      /* HEADLINE */
-      h2 {
-        color: #1db954;
-        font-weight: 700;
-        margin-bottom: 25px;
-      }
-
-      /* INPUT FIELDS */
-      .input-wrapper {
-        position: relative;
-        width: 100%;
-        margin-bottom: 18px;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
       }
 
       input {
         width: 100%;
-        padding: 14px 45px 14px 14px;
-        border-radius: 10px;
-        border: 1px solid #ccc;
-        font-size: 15px;
-        box-sizing: border-box;
-        outline: none;
-        text-align: center;
-        transition: border 0.3s ease, box-shadow 0.3s ease;
+        padding: 12px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 6px;
       }
 
-      input:focus {
-        border: 1px solid #1db954;
-        box-shadow: 0 0 8px rgba(29, 185, 84, 0.4);
-      }
-
-      /* EYE ICON */
-      .togglePwd {
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-        font-size: 20px;
-        user-select: none;
-        color: #555;
-      }
-
-      /* BUTTONS */
       button {
         width: 100%;
-        padding: 13px;
-        margin: 15px 0 10px 0;
-        border-radius: 10px;
-        background: #1db954;
-        color: white;
+        padding: 12px;
+        margin-top: 15px;
+        background: #4e73df;
         border: none;
-        cursor: pointer;
+        border-radius: 6px;
+        color: white;
         font-size: 16px;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        transition: background 0.3s, transform 0.1s;
+        cursor: pointer;
       }
 
       button:hover {
-        background: #17a44b;
-        transform: scale(1.03);
+        background: #3b5bbb;
       }
 
-      /* LINKS */
       a {
-        color: #1db954;
-        text-decoration: none;
-        margin-top: 8px;
         display: block;
-        font-size: 14px;
-        font-weight: 500;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      /* SECTION */
-      h3 {
-        color: #1db954;
-        font-size: 18px;
-        margin-top: 25px;
-        margin-bottom: 10px;
-      }
-
-      /* LEADERBOARD */
-      .leaderboard {
-        width: 100%;
-        margin-top: 25px;
-        border-top: 2px solid #1db954;
-        padding-top: 15px;
-        text-align: left;
-      }
-
-      .leaderboard ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .leaderboard li {
-        background: #f8f8f8;
-        padding: 10px 12px;
-        border-radius: 8px;
-        margin-bottom: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 500;
-        transition: background 0.3s;
-      }
-
-      .leaderboard li:hover {
-        background: #e8ffe8;
-      }
-
-      /* RESPONSIVE DESIGN */
-      @media (max-width: 500px) {
-        .container {
-          padding: 30px 20px;
-          border-radius: 12px;
-        }
-
-        input,
-        button {
-          font-size: 14px;
-        }
-
-        h2 {
-          font-size: 22px;
-        }
+        margin-top: 15px;
+        color: #4e73df;
+        text-decoration: none;
       }
     </style>
   </head>
@@ -172,23 +71,12 @@
   <body>
     <div class="container">
       <h2>Login</h2>
-      <input id="email" placeholder="E-Mail" />
-      <div class="input-wrapper">
-        <input id="password" type="password" placeholder="Passwort" />
-        <span id="togglePwd" class="togglePwd">👁️</span>
-      </div>
-      <button id="loginBtn">Einloggen</button>
+
+      <input id="email" type="email" placeholder="E-Mail" />
+      <input id="password" type="password" placeholder="Passwort" />
+      <button id="loginBtn">Login</button>
+
       <a href="register.html">Noch kein Konto? Registrieren</a>
-
-      <h3>Wer gewinnt die Bundesliga?</h3>
-      <div class="input-wrapper">
-        <input id="tipp" placeholder="Verein" />
-      </div>
-      <button id="submitTip">Tipp abschicken</button>
-
-      <div class="leaderboard">
-        <ul id="leaderboardList"></ul>
-      </div>
     </div>
 
     <script type="module">
@@ -196,92 +84,44 @@
       import {
         getAuth,
         signInWithEmailAndPassword,
+        signOut,
       } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js";
-      import {
-        getFirestore,
-        collection,
-        addDoc,
-        getDocs,
-        doc,
-        getDoc,
-      } from "https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyBmIcdFtxv4jBJKdiAkEiwnkQ8yRwiG_0w",
-        authDomain: "goalnewsde-community.firebaseapp.com",
-        projectId: "goalnewsde-community",
-        storageBucket: "goalnewsde-community.firebasestorage.app",
-        messagingSenderId: "134523022055",
-        appId: "1:134523022055:web:4f35ed7812d06e4fb55042",
+        apiKey: "HIER",
+        authDomain: "HIER",
+        projectId: "HIER",
+        storageBucket: "HIER",
+        messagingSenderId: "HIER",
+        appId: "HIER",
       };
 
       const app = initializeApp(firebaseConfig);
       const auth = getAuth(app);
-      const db = getFirestore(app);
 
-      const email = document.getElementById("email");
-      const password = document.getElementById("password");
-      const toggleBtn = document.getElementById("togglePwd");
-      const loginBtn = document.getElementById("loginBtn");
-      const tipp = document.getElementById("tipp");
-      const submitTip = document.getElementById("submitTip");
-      const leaderboardList = document.getElementById("leaderboardList");
+      document.getElementById("loginBtn").onclick = async () => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
 
-      toggleBtn.onclick = () => {
-        if (password.type === "password") {
-          password.type = "text";
-          toggleBtn.textContent = "🙈";
-        } else {
-          password.type = "password";
-          toggleBtn.textContent = "👁️";
-        }
-      };
-
-      loginBtn.onclick = async () => {
         try {
-          await signInWithEmailAndPassword(auth, email.value, password.value);
-          alert("Erfolgreich eingeloggt!");
+          const userCred = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = userCred.user;
+
+          if (!user.emailVerified) {
+            await signOut(auth);
+            alert("Bro check deine Mail und verifizier dich erst.");
+            return;
+          }
+
           window.location.href = "seite_im_aufbau.html";
         } catch (err) {
           alert(err.message);
         }
       };
-
-      submitTip.onclick = async () => {
-        const user = auth.currentUser;
-        if (!user) {
-          alert("Bitte zuerst einloggen!");
-          return;
-        }
-        if (!tipp.value) {
-          alert("Bitte einen Verein eintragen!");
-          return;
-        }
-        await addDoc(collection(db, "tipps"), {
-          user: user.uid,
-          tipp: tipp.value,
-        });
-        tipp.value = "";
-        loadLeaderboard();
-      };
-
-      async function loadLeaderboard() {
-        leaderboardList.innerHTML = "";
-        const tippsSnapshot = await getDocs(collection(db, "tipps"));
-        for (const docSnap of tippsSnapshot.docs) {
-          const data = docSnap.data();
-          const userDoc = await getDoc(doc(db, "users", data.user));
-          const username = userDoc.exists()
-            ? userDoc.data().username
-            : "Unbekannt";
-
-          const li = document.createElement("li");
-          li.textContent = `${username}: ${data.tipp}`;
-          leaderboardList.appendChild(li);
-        }
-      }
-
-      loadLeaderboard();
     </script>
   </body>
 </html>
