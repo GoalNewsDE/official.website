@@ -159,7 +159,9 @@
 
           await sendEmailVerification(user);
 
-          alert("Check deine E-Mail und bestätige deinen Account!");
+          alert(
+            "Check deine E-Mail (Auch den Spam) und bestätige deinen Account!"
+          );
           window.location.href = "login.html";
         } catch (err) {
           alert(err.message);
